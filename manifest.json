@@ -5,12 +5,12 @@
   "description": "Converts instances of '/r/n' into newlines within log messages in the Kibana interface.",
   "version": "1.0",
   "permissions": [
-    "http://*/*"
+    "http://syslog.linn.co.uk/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "http://*/*"
+        "http://syslog.linn.co.uk/*"
       ],
       "js": [
         "content/jquery-1.8.0.min.js",
