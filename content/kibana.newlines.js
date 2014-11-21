@@ -3,14 +3,10 @@ $(document).on('click', 'tr[ng-click="toggle_details(event)"]', function(e) {
 
 	$tbody.find('tr[ng-if="event.kibana.details"] td table tbody tr').each(function() {
 		var $row = $(this);
-		var field = $row.find('td').eq(0).text();
+		var $value = $row.find('td').eq(2);
+		var s = $value.text().replace(/\\r\\n/g, '<br>');
 
-		if (field == 'exception') {
-			var $value = $row.find('td').eq(2);
-			var s = $value.text().replace(/\\r\\n/g, '<br>');
-
-			$value.html(s);
-		}
+		$value.html(s);
 	});
 });
 
