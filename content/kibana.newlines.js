@@ -1,11 +1,16 @@
 $(document).on('click', 'tr[ng-click="toggle_details(event)"]', function(e) {
 	var $tbody = $(e.target).parents('tbody');
 
-	$tbody.find('tr[ng-show="event.kibana.details"] td table tbody tr td:nth-child(3)').each(function() {
-		var $this = $(this);
-		var text = $this.text().replace(/\\r\\n/g, '<br>');
+	$tbody.find('tr[ng-if="event.kibana.details"] td table tbody tr').each(function() {
+		var $row = $(this);
+		var field = $row.find('td').eq(0).text();
 
-		$this.html(text);
+		if (field == 'exception') {
+			var $value = $row.find('td').eq(2);
+			var s = $value.text().replace(/\\r\\n/g, '<br>');
+
+			$value.html(s);
+		}
 	});
 });
 
